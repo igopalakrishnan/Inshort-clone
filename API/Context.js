@@ -9,6 +9,7 @@ const Context = ({ children }) => {
     const [category, setCategory] = useState("general");
     const [index, setIndex] = useState(1);
     const [source, setSource] = useState();
+    const [darkTheme, setDarkTheme] = useState(true);
 
 
     const fetchNews = async (reset = category) => {
@@ -22,7 +23,6 @@ const Context = ({ children }) => {
             const { data } = await axios.get(getSourceAPI(source));
             setNews(data);
             setIndex(1);
-            console.log(data)
         } catch (error) {
             console.log(error);
         }
@@ -47,6 +47,8 @@ const Context = ({ children }) => {
                 setIndex,
                 setSource,
                 fetchNews,
+                darkTheme,
+                setDarkTheme
             }}
         >
             {children}
